@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PickARideApplication</string>
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Change the following strings as required -->
+    <string name="back4app_app_id">Yi6lbrQsu83Gn9WD2lSeVvXCS3qdZcsnu3mS766m</string>
+    <string name="back4app_client_key">caQwpjiuJTW7CvAhe2UPuP7X3GhoMQwSLfsWORAC</string>
+    <string name="title_activity_passenger">Map</string>
+
+</resources>

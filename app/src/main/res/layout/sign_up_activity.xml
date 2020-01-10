@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="770dp"
+        android:layout_height="878dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginBottom="246dp"
+        android:alpha="0.5"
+        android:rotation="270"
+        android:src="@drawable/backimage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="235dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="90dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioButtonGroup"
+        android:layout_width="307dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText">
+
+        <RadioButton
+            android:id="@+id/passengerButton"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Passenger" />
+
+        <RadioButton
+            android:id="@+id/driverButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Driver" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="SignUp"
+        android:textColor="#fec935"
+        android:textStyle="bold"
+        android:background="@drawable/custom_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButtonGroup" />
+
+    <EditText
+        android:id="@+id/nameText"
+        android:layout_width="350dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Name"
+        android:paddingLeft="5dp"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/custom_textfield"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="350dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:drawableLeft="@drawable/password_icon"
+        android:hint="Password"
+        android:background="@drawable/custom_textfield"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+    <TextView
+        android:id="@+id/guestText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Or use as a guest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
