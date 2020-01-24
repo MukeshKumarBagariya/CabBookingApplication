@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.DeleteCallback;
 import com.parse.FindCallback;
+import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
@@ -39,8 +41,8 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
-    private Button getARideButton;
-    private boolean isCarCancelled = false;
+    private Button getARideButton,logoutButton;
+    private boolean isCarCancelled = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,13 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         getARideButton = findViewById(R.id.getARideButton);
+        logoutButton = findViewById(R.id.logoutButton);
         getARideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialog progressDialog = new ProgressDialog(PassengerActivity.this);
+                progressDialog.setMessage("Finding taxis near you...");
+                progressDialog.show();
                 if (isCarCancelled) {
                     if (ContextCompat.checkSelfPermission(PassengerActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -101,6 +107,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                         }
                     });
                 }
+                progressDialog.dismiss();
             }
         });
             ParseQuery<ParseObject> parseQuery = ParseQuery.getQuery("RequestCar");
@@ -112,6 +119,19 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                         isCarCancelled = false;
                         getARideButton.setText("Cancel your ride");
                     }
+                }
+            });
+            logoutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ParseUser.logOutInBackground(new LogOutCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null){
+                                finish();
+                            }
+                        }
+                    });
                 }
             });
 
